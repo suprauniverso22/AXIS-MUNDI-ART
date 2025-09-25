@@ -101,68 +101,19 @@
         <div> <p>SOCIAL MEDIA ICONS</p> </div>
     </footer>
 
-    <script>
+<script>
         const artGalleryBtn = document.getElementById('artGalleryBtn');
         const galleryContent = document.getElementById('gallery-content');
-        const misionVisionBtn = document.getElementById('misionVisionBtn');
-        const misionVisionModal = document.getElementById('mision-vision-modal');
-        const closeModalBtn = document.getElementById('closeModalBtn');
-
+        
         artGalleryBtn.addEventListener('click', () => {
             galleryContent.classList.toggle('hidden');
+            // Opcional: Desplazarse a la galería al abrirla
+            if (!galleryContent.classList.contains('hidden')) {
+                galleryContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
-        misionVisionBtn.addEventListener('click', () => {
-            misionVisionModal.classList.remove('hidden');
-        });
-        closeModalBtn.addEventListener('click', () => {
-            misionVisionModal.classList.add('hidden');
-        });
-
-        // Lógica para el nuevo visor de diapositivas del proyecto
-        const sliderContainer = document.getElementById('project-slider');
-        const nextBtn = document.getElementById('nextSlide');
-        const prevBtn = document.getElementById('prevSlide');
-        const slideCounter = document.getElementById('slideCounter');
-        let currentSlide = 0;
-        const totalSlides = 10; // El número total de tus imágenes de proyecto
-
-        // Generar las diapositivas
-        for (let i = 1; i <= totalSlides; i++) {
-            const slide = document.createElement('div');
-            slide.classList.add('slide', 'w-full', 'h-full', 'flex', 'justify-center', 'items-center');
-            if (i === 1) slide.classList.add('active'); // La primera es visible
-            
-            const img = document.createElement('img');
-            // La ruta de la imagen sigue el nuevo estándar: 'images/project-slide-01.jpg', 'images/project-slide-02.jpg', etc.
-            img.src = `images/project-slide-${String(i).padStart(2, '0')}.jpg`;
-            img.alt = `Diapositiva del Proyecto ${i}`;
-            img.classList.add('max-w-full', 'max-h-full', 'object-contain');
-            
-            slide.appendChild(img);
-            sliderContainer.appendChild(slide);
-        }
-
-        const slides = document.querySelectorAll('#project-slider .slide');
-
-        function updateSlider() {
-            slides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === currentSlide);
-            });
-            slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
-        }
-
-        nextBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlider();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateSlider();
-        });
-
-        // Iniciar el visor
-        updateSlider();
     </script>
+</body>
+</html>
 </body>
 </html>
