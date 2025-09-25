@@ -7,65 +7,62 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Orbitron', sans-serif;
-            /* INSTRUCCIÓN: Si quieres cambiar la imagen de fondo general, hazlo aquí. */
-            background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop');
-            background-size: cover;
-            background-attachment: fixed;
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Orbitron', sans-serif; background-color: #000; color: #fff; }
+        .bg-main-background {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop');
+            background-size: cover; background-attachment: fixed;
         }
-
-        /* Estilo para el GIF de fondo en la sección principal */
         .gif-background {
-            /* He integrado el GIF que subiste. */
-            background-image: url('ggg.gif');
-            background-size: cover;
-            background-position: center;
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/animation.gif');
+            background-size: cover; background-position: center;
         }
-        
-        /* Estilos para los botones con las imágenes de fondo que especificaste */
-        .art-gallery-bg {
-            background-image: url('https://i.imgur.com/kY1h0sH.png'); /* Fondo para ART GALLERY */
-        }
-        
-        .cta-button-bg {
-             background-image: url('https://i.imgur.com/uN5aD6C.png'); /* Fondo para DESCUBRE EL PROYECTO */
-        }
-
-        .gallery-images-bg {
-             background-image: url('https://i.imgur.com/M6xXVc3.png'); /* Fondo para Galería de Imágenes */
-        }
-
-        .gallery-gifs-bg {
-             background-image: url('https://i.imgur.com/7bQy2qS.png'); /* Fondo para Galería de GIFs */
-        }
-
         .button-base-style {
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            transition: transform 0.3s ease;
+            background-size: cover; background-position: center; color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.9); transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.5); position: relative; z-index: 1;
         }
-
-        .button-base-style:hover {
-            transform: scale(1.05);
+        .button-base-style::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0,0,0,0.4); z-index: -1;
+            transition: background-color 0.3s ease; border-radius: inherit;
         }
-
+        .button-base-style:hover { transform: scale(1.05); border-color: rgba(255,255,255,1); }
+        .button-base-style:hover::before { background-color: rgba(0,0,0,0.2); }
+        .art-gallery-bg { background-image: url('images/bg-art-gallery.png'); }
+        .cta-button-bg { background-image: url('images/bg-cta.png'); }
+        .gallery-images-bg { background-image: url('images/bg-gallery-images.png'); }
+        .gallery-gifs-bg { background-image: url('images/bg-gallery-gifs.png'); }
+        .gallery-preview-item {
+            background-color: rgba(255,255,255,0.1); border-radius: 0.375rem; transition: all 0.3s ease;
+        }
+        .gallery-preview-item:hover { transform: scale(1.05); background-color: rgba(255,255,255,0.2); }
+        
+        /* Estilos para el nuevo visor de diapositivas del proyecto */
+        .project-slider-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5); color: white; border-radius: 50%;
+            width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; cursor: pointer; transition: background-color 0.3s; user-select: none;
+        }
+        .project-slider-arrow:hover { background-color: rgba(0,0,0,0.8); }
+        #prevSlide { left: 1rem; }
+        #nextSlide { right: 1rem; }
+        .slide { display: none; } /* Ocultar diapositivas por defecto */
+        .slide.active { display: block; } /* Mostrar solo la diapositiva activa */
     </style>
 </head>
-<body class="bg-black text-white">
+<body class="bg-main-background">
 
     <!-- Cabecera -->
-    <header class="text-center py-8 px-4 bg-black bg-opacity-50 backdrop-blur-sm">
+    <header class="text-center py-8 px-4 bg-black bg-opacity-60 backdrop-blur-md sticky top-0 z-20">
         <div class="flex justify-center items-center space-x-6 mb-4">
-            <!-- He reemplazado los iconos SVG por las imágenes que me proporcionaste. -->
-            <img src="https://i.imgur.com/8Y2L5dI.png" alt="Logo Vajra" class="h-16 md:h-20">
-            <img src="https://i.imgur.com/5z7S1A8.png" alt="Logo Edit" class="h-16 md:h-20">
+            <img src="images/logo-vajra.png" alt="Logo Vajra" class="h-14 md:h-20 transition-transform duration-300 hover:scale-110">
+            <img src="images/logo-edit.png" alt="Logo Edit" class="h-14 md:h-20 transition-transform duration-300 hover:scale-110">
         </div>
-        <h1 class="text-4xl md:text-6xl font-bold tracking-widest uppercase">AXIS-MUNDI ART PROJECT</h1>
+        <h1 class="text-4xl md:text-6xl font-black tracking-widest uppercase">AXIS-MUNDI ART PROJECT</h1>
         <p class="text-lg md:text-xl text-gray-300">by Americus Amadeus Dodge</p>
         <div class="mt-6">
             <button id="artGalleryBtn" class="art-gallery-bg button-base-style text-xl font-bold py-3 px-8 rounded-lg shadow-lg">
@@ -75,65 +72,35 @@
     </header>
 
     <!-- Sección principal con GIF de fondo -->
-    <section class="h-96 flex flex-col justify-center items-center gif-background my-8">
-         <button id="misionVisionBtn" class="cta-button-bg button-base-style text-lg font-bold py-3 px-6 rounded-lg shadow-lg">
+    <section class="h-[60vh] md:h-96 flex flex-col justify-center items-center gif-background my-8 shadow-2xl">
+         <button id="misionVisionBtn" class="cta-button-bg button-base-style text-lg font-bold py-4 px-8 rounded-lg shadow-lg">
             DESCUBRE EL PROYECTO
         </button>
     </section>
 
     <!-- Sección de Galerías (inicialmente oculta) -->
-    <section id="gallery-content" class="hidden-content hidden py-12 px-4 bg-black bg-opacity-70 backdrop-blur-md">
+    <section id="gallery-content" class="hidden-content hidden py-16 px-4 bg-black bg-opacity-80 backdrop-blur-md">
         <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-8">Nuestras Galerías</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <h2 class="text-3xl font-bold mb-12">NUESTRAS GALERÍAS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
                 <!-- Galería de Imágenes -->
                 <div>
-                    <h3 class="text-2xl mb-4">Imágenes</h3>
-                    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-2">
-                        <!-- 14 recuadros de vista parcial. -->
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                    <h3 class="text-2xl mb-6">Imágenes</h3>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3">
+                        <div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div>
                     </div>
-                    <!-- Este botón ahora te llevará a la nueva página de galería -->
                     <a href="gallery-images.html">
-                        <button class="gallery-images-bg button-base-style mt-6 font-bold py-2 px-6 rounded-lg shadow-lg w-full">VER GALERÍA DE IMÁGENES</button>
+                        <button class="gallery-images-bg button-base-style mt-8 font-bold py-3 px-6 rounded-lg shadow-lg w-full md:w-auto">VER GALERÍA DE IMÁGENES</button>
                     </a>
                 </div>
                 <!-- Galería de GIFs -->
                 <div>
-                    <h3 class="text-2xl mb-4">GIFs</h3>
-                    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-2">
-                        <!-- 14 recuadros de vista parcial -->
-                         <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
-                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                    <h3 class="text-2xl mb-6">GIFs</h3>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3">
+                        <div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div><div class="w-full h-24 gallery-preview-item"></div>
                     </div>
-                     <!-- Este botón ahora te llevará a la nueva página de galería -->
                     <a href="gallery-gifs.html">
-                        <button class="gallery-gifs-bg button-base-style mt-6 font-bold py-2 px-6 rounded-lg shadow-lg w-full">VER GALERÍA DE GIFS</button>
+                        <button class="gallery-gifs-bg button-base-style mt-8 font-bold py-3 px-6 rounded-lg shadow-lg w-full md:w-auto">VER GALERÍA DE GIFS</button>
                     </a>
                 </div>
             </div>
@@ -143,29 +110,21 @@
     <!-- Pie de página -->
     <footer class="text-center py-6 px-4 bg-black bg-opacity-80 mt-8">
         <div class="mb-4">INFO / COPYRIGHT NOTICE &copy; 2024 Americus Amadeus Dodge</div>
-        <div>
-            <p>SOCIAL MEDIA ICONS</p>
-        </div>
+        <div> <p>SOCIAL MEDIA ICONS</p> </div>
     </footer>
 
-    <!-- Modal para Misión y Visión (inicialmente oculto) -->
-    <div id="mision-vision-modal" class="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center p-4 hidden z-50">
-        <div class="bg-white text-black max-w-4xl w-full rounded-lg p-8 overflow-y-auto max-h-full relative">
-            <button id="closeModalBtn" class="absolute top-4 right-4 text-3xl font-bold">&times;</button>
-            <h2 class="text-3xl font-bold mb-6 text-center">Misión y Visión del Proyecto</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-2xl font-bold mb-3">Nuestra Misión</h3>
-                    <p class="mb-6">Aquí puedes escribir la misión de tu proyecto, lo que buscas lograr, a quién sirves y el propósito de tu sitio web.</p>
-                    <img src="https://placehold.co/600x400/png?text=Tu+Imagen+Mision" alt="Imagen representativa de la Misión" class="w-full rounded-lg shadow-lg">
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold mb-3">Nuestra Visión</h3>
-                    <p class="mb-6">Aquí puedes describir la visión, el futuro ideal que imaginas para tu proyecto.</p>
-                    <img src="https://placehold.co/600x400/png?text=Tu+Imagen+Vision" alt="Imagen representativa de la Visión" class="w-full rounded-lg shadow-lg">
-                </div>
-            </div>
+    <!-- MODAL MODIFICADO: Ahora es un visor de diapositivas del proyecto -->
+    <div id="mision-vision-modal" class="fixed inset-0 bg-black bg-opacity-95 flex justify-center items-center p-4 hidden z-50">
+        <div id="project-slider" class="w-full h-full max-w-6xl max-h-[90vh] relative">
+            <!-- Las diapositivas se insertarán aquí con JavaScript -->
         </div>
+        <!-- Controles de navegación -->
+        <div id="prevSlide" class="project-slider-arrow">&#10094;</div>
+        <div id="nextSlide" class="project-slider-arrow">&#10095;</div>
+        <!-- Botón de cerrar -->
+        <button id="closeModalBtn" class="absolute top-4 right-4 text-white text-5xl font-bold">&times;</button>
+        <!-- Contador de diapositivas -->
+        <div id="slideCounter" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white bg-black bg-opacity-50 px-3 py-1 rounded-full"></div>
     </div>
 
     <script>
@@ -184,11 +143,52 @@
         closeModalBtn.addEventListener('click', () => {
             misionVisionModal.classList.add('hidden');
         });
-        misionVisionModal.addEventListener('click', (event) => {
-            if (event.target === misionVisionModal) {
-                misionVisionModal.classList.add('hidden');
-            }
+
+        // Lógica para el nuevo visor de diapositivas del proyecto
+        const sliderContainer = document.getElementById('project-slider');
+        const nextBtn = document.getElementById('nextSlide');
+        const prevBtn = document.getElementById('prevSlide');
+        const slideCounter = document.getElementById('slideCounter');
+        let currentSlide = 0;
+        const totalSlides = 10; // El número total de tus imágenes de proyecto
+
+        // Generar las diapositivas
+        for (let i = 1; i <= totalSlides; i++) {
+            const slide = document.createElement('div');
+            slide.classList.add('slide', 'w-full', 'h-full', 'flex', 'justify-center', 'items-center');
+            if (i === 1) slide.classList.add('active'); // La primera es visible
+            
+            const img = document.createElement('img');
+            // La ruta de la imagen sigue el nuevo estándar: 'images/project-slide-01.jpg', 'images/project-slide-02.jpg', etc.
+            img.src = `images/project-slide-${String(i).padStart(2, '0')}.jpg`;
+            img.alt = `Diapositiva del Proyecto ${i}`;
+            img.classList.add('max-w-full', 'max-h-full', 'object-contain');
+            
+            slide.appendChild(img);
+            sliderContainer.appendChild(slide);
+        }
+
+        const slides = document.querySelectorAll('#project-slider .slide');
+
+        function updateSlider() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
         });
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+
+        // Iniciar el visor
+        updateSlider();
     </script>
 </body>
 </html>
