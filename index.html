@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIS-MUNDI ART PROJECT</title>
+    <!-- He añadido Tailwind CSS para un diseño moderno y adaptable fácilmente -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- He importado la tipografía Orbitron de Google Fonts, es futurista y gratuita -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Aquí definimos la tipografía para toda la página */
+        body {
+            font-family: 'Orbitron', sans-serif;
+            /* INSTRUCCIÓN 1: Cambia la URL de abajo por la de tu imagen de fondo para la página.
+               Puedes subir tu imagen a GitHub y usar el enlace. */
+            background-image: url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?q=80&w=2071&auto=format&fit=crop');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        /* Estilo para el GIF de fondo en la sección principal */
+        .gif-background {
+            /* INSTRUCCIÓN 2: Cambia la URL de abajo por la de tu GIF. */
+            background-image: url('https://i.giphy.com/media/xTiTnxpQ3ghPiB2Hp6/giphy.gif');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Estilo para los botones con imagen de fondo */
+        .button-with-bg {
+             /* INSTRUCCIÓN 3: Cambia la URL por la de tu imagen de fondo para los botones. */
+            background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white; /* Aseguramos que el texto sea legible */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <!-- Cabecera -->
+    <header class="text-center py-8 px-4 bg-black bg-opacity-50 backdrop-blur-sm">
+        <div class="flex justify-center items-center space-x-6 mb-4">
+            <!-- He reemplazado ICON 1 y 2 por iconos SVG. Puedes cambiarlos por los tuyos. -->
+            <!-- ICON 1 -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+            <!-- ICON 2 -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10h.01M15 10h.01M9 14h6" />
+            </svg>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold tracking-widest uppercase">AXIS-MUNDI ART PROJECT</h1>
+        <p class="text-lg md:text-xl text-gray-300">by Americus Amadeus Dodge</p>
+        <div class="mt-6">
+            <button id="artGalleryBtn" class="button-with-bg text-xl font-bold py-3 px-8 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                ART GALLERY
+            </button>
+        </div>
+    </header>
+
+    <!-- Sección principal con GIF de fondo -->
+    <section class="h-96 flex flex-col justify-center items-center gif-background my-8">
+         <button id="misionVisionBtn" class="bg-white text-black text-lg font-bold py-3 px-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+            DESCUBRE EL PROYECTO
+        </button>
+    </section>
+
+    <!-- Sección de Galerías (inicialmente oculta) -->
+    <section id="gallery-content" class="hidden-content hidden py-12 px-4 bg-black bg-opacity-70 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8">Nuestras Galerías</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Galería de Imágenes -->
+                <div>
+                    <h3 class="text-2xl mb-4">Imágenes</h3>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-2">
+                        <!-- 14 recuadros de vista parcial. Haz un bucle o copia y pega si es necesario. -->
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                    </div>
+                    <button class="button-with-bg mt-6 font-bold py-2 px-6 rounded-lg shadow-lg">VER GALERÍA DE IMÁGENES</button>
+                </div>
+                <!-- Galería de GIFs -->
+                <div>
+                    <h3 class="text-2xl mb-4">GIFs</h3>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-2">
+                        <!-- 14 recuadros de vista parcial -->
+                         <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                        <div class="w-full h-24 bg-gray-700 rounded-md"></div>
+                    </div>
+                    <button class="button-with-bg mt-6 font-bold py-2 px-6 rounded-lg shadow-lg">VER GALERÍA DE GIFS</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="text-center py-6 px-4 bg-black bg-opacity-80 mt-8">
+        <div class="mb-4">INFO / COPYRIGHT NOTICE &copy; 2024 Americus Amadeus Dodge</div>
+        <div>
+            <!-- Aquí puedes añadir tus iconos de redes sociales -->
+            <p>SOCIAL MEDIA ICONS</p>
+        </div>
+    </footer>
+
+    <!-- Modal para Misión y Visión (inicialmente oculto) -->
+    <div id="mision-vision-modal" class="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center p-4 hidden z-50">
+        <div class="bg-white text-black max-w-4xl w-full rounded-lg p-8 overflow-y-auto max-h-full relative">
+            <button id="closeModalBtn" class="absolute top-4 right-4 text-3xl font-bold">&times;</button>
+            <h2 class="text-3xl font-bold mb-6 text-center">Misión y Visión del Proyecto</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-3">Nuestra Misión</h3>
+                    <p class="mb-6">Aquí puedes escribir la misión de tu proyecto, lo que buscas lograr, a quién sirves y el propósito de tu sitio web.</p>
+                     <!-- INSTRUCCIÓN 4: Cambia la URL de abajo por la de tu imagen PNG de Misión. -->
+                    <img src="https://placehold.co/600x400/png?text=Tu+Imagen+Mision" alt="Imagen representativa de la Misión" class="w-full rounded-lg shadow-lg">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-3">Nuestra Visión</h3>
+                    <p class="mb-6">Aquí puedes describir la visión, el futuro ideal que imaginas para tu proyecto.</p>
+                     <!-- INSTRUCCIÓN 5: Cambia la URL de abajo por la de tu imagen PNG de Visión. -->
+                    <img src="https://placehold.co/600x400/png?text=Tu+Imagen+Vision" alt="Imagen representativa de la Visión" class="w-full rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Seleccionamos los botones y las secciones
+        const artGalleryBtn = document.getElementById('artGalleryBtn');
+        const galleryContent = document.getElementById('gallery-content');
+        
+        const misionVisionBtn = document.getElementById('misionVisionBtn');
+        const misionVisionModal = document.getElementById('mision-vision-modal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        // Función para mostrar/ocultar la galería de arte
+        artGalleryBtn.addEventListener('click', () => {
+            galleryContent.classList.toggle('hidden');
+        });
+
+        // Funciones para mostrar/ocultar el modal de Misión y Visión
+        misionVisionBtn.addEventListener('click', () => {
+            misionVisionModal.classList.remove('hidden');
+        });
+        
+        closeModalBtn.addEventListener('click', () => {
+            misionVisionModal.classList.add('hidden');
+        });
+        
+        // Opcional: cerrar el modal si se hace clic fuera del contenido
+        misionVisionModal.addEventListener('click', (event) => {
+            if (event.target === misionVisionModal) {
+                misionVisionModal.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
