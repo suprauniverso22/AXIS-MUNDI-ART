@@ -39,7 +39,14 @@
             background-color: rgba(255,255,255,0.1); border-radius: 0.375rem; transition: all 0.3s ease;
         }
         .gallery-preview-item:hover { transform: scale(1.05); background-color: rgba(255,255,255,0.2); }
-        
+        .social-icon {
+            color: #fff; /* Color inicial del ícono (blanco) */
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            color: #a0aec0; /* Color del ícono al pasar el mouse (gris claro) */
+            transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+        }
     </style>
 </head>
 <body class="bg-main-background">
@@ -127,9 +134,21 @@
     </section>
 
     <!-- Pie de página -->
-    <footer class="text-center py-6 px-4 bg-black bg-opacity-80 mt-8">
+<footer class="text-center py-6 px-4 bg-black bg-opacity-80 mt-8">
         <div class="mb-4">INFO / COPYRIGHT NOTICE &copy; 2025 Americus Amadeus Dodge</div>
-        <div> <p>SOCIAL MEDIA ICONS</p> </div>
+        
+        <div class="flex justify-center items-center space-x-6">
+            <a href="https://www.behance.net/amadeusdodge#" target="_blank" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+                    <path d="M7.938 10.5h4.124c0-2.312-1.875-2.438-4.124-2.438H2V22h10.312c4.438 0 6.188-2.812 6.188-6.188 0-2.5-1.125-4.188-3.375-5.312C14.062 9.5 15.438 8.125 15.438 6c0-3.313-2.375-4-5.5-4H2v8.5zm2.062-4.5h2c1.125 0 1.938.312 1.938 1.375 0 1-1 1.375-2.062 1.375h-1.875V6zM12.5 18.25c0 1.875-1.312 2.75-3.312 2.75H4V12h5.188c2.312 0 3.312 1.125 3.312 3.125S14.5 18.25 12.5 18.25zM22 8.5h-5.5V6H22v2.5z"/>
+                </svg>
+            </a>
+            <a href="https://x.com/AmadeusDodge" target="_blank" class="social-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+            </a>
+        </div>
     </footer>
 
 <script>
