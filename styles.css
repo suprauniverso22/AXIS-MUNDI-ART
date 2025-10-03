@@ -1,0 +1,31 @@
+/* styles.css — mobile-first safe */
+:root{--content-max-width:1200px}
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;padding:0;background:#000;color:#fff;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.container{max-width:var(--content-max-width);margin:0 auto;padding:0 1rem}
+img{max-width:100%;height:auto;display:block}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:0}
+@media(min-width:640px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1024px){.gallery-grid{grid-template-columns:repeat(4,1fr)}}
+
+/* evita backgrounds fixed en móviles */
+.bg-fixed-desktop{background-attachment:scroll}
+@media(min-width:1024px){.bg-fixed-desktop{background-attachment:fixed}}
+
+/* tipografía y suavizado para iOS */
+h1,h2,h3{line-height:1.05;word-break:break-word}
+html,body{ -webkit-text-size-adjust:100%; }
+
+/* botones base */
+.btn{display:inline-block;padding:.5rem 1rem;border:2px solid rgba(255,255,255,.15);border-radius:.5rem;text-decoration:none}
+.btn:active{transform:scale(.995)}
+
+/* fallback para aspect-ratio */
+.gallery-item{aspect-ratio:4/3;object-fit:cover;border-radius:.35rem;overflow:hidden}
+@supports not (aspect-ratio:1/1){
+  .gallery-item{height:0;padding-bottom:75%}
+}
+
+/* evita desbordes por elementos posicionados */
+*{max-width:100%}
